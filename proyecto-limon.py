@@ -16,12 +16,10 @@ def detectar_color_amarillo(frame):
     # Definir el rango del color amarillo en HSV
     amarillo_bajo = np.array([20, 100, 100], np.uint8)
     amarillo_alto = np.array([30, 255, 255], np.uint8)
-    #lower_green = np.array([25, 50, 50], np.uint8)
-    #upper_green = np.array([75, 255, 255],np.uint8)
     
     # Crear una máscara con el rango del color amarillo
     mascara = cv2.inRange(hsv, amarillo_bajo, amarillo_alto)
-    #mascara = cv2.inRange(hsv, lower_green, upper_green)
+    
     
     # Filtrar la imagen para obtener solo las partes amarillas
     result = cv2.bitwise_and(frame, frame, mask=mascara)
@@ -35,17 +33,14 @@ def detect_unripe_fruit(frame):
     # Convertir la imagen a espacio de color HSV
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     
-    # Definir los rangos de color para detectar frutas no maduras
-    #lower_green = np.array([25, 50, 50], np.uint8)
-    #upper_green = np.array([75, 255, 255],np.uint8)
+    # Definir los rangos de color para detectar frutas maduras
+    
     amarillo_bajo = np.array([20, 100, 100], np.uint8)
     amarillo_alto = np.array([30, 255, 255], np.uint8)
     
     # Crear una máscara para detectar los píxeles 
     mask = cv2.inRange(hsv, amarillo_bajo, amarillo_alto)
-    
-    
-        
+            
     return mask
 
 
